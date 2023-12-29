@@ -21,7 +21,7 @@ files {
 
 dependencies {
     'rsg-core',
-    --'rsg-policejob',
+    'rsg-policejob',
     --'rsg-lawman',
     'ox_lib'
 }
