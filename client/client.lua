@@ -48,10 +48,6 @@ RegisterNetEvent(
                     lockpick(true)
                     currentRegister = k
                 end
-                if Config.Alerts == true then
-                    TriggerServerEvent('police:server:policeAlert', 'People are tampering with registers')
-                    --TriggerServerEvent('rsg-lawman:server:lawmanAlert', 'People are tampering with registers') -- not yet added
-                end
             end
         end
     end
@@ -87,6 +83,8 @@ RegisterNUICallback(
     function(_, cb)
         if currentRegister ~= 0 then
             lockpick(false)
+            TriggerServerEvent('police:server:policeAlert', 'People are tampering with registers')
+            --TriggerServerEvent('rsg-lawman:server:lawmanAlert', 'People are tampering with registers') -- not yet added
             TriggerServerEvent('rsg-storerobbery:server:setRegisterStatus', currentRegister)
             local lockpickTime = 60000
             RSGCore.Functions.Progressbar(
