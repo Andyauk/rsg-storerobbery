@@ -88,7 +88,7 @@ RegisterNUICallback(
         if currentRegister ~= 0 then
             lockpick(false)
             TriggerServerEvent('rsg-storerobbery:server:setRegisterStatus', currentRegister)
-            local lockpickTime = 10000
+            local lockpickTime = 60000
             RSGCore.Functions.Progressbar(
                 'search_register',
                 'Stealing Cash',
