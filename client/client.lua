@@ -33,38 +33,6 @@ CreateThread(
     end
 )
 
-
-
--- RegisterNetEvent('lockpicks:UseLockpick')
--- AddEventHandler('lockpicks:UseLockpick', function(isAdvanced)
---     usingAdvanced = isAdvanced
---     for k in pairs(Config.Registers) do
---         local ped = PlayerPedId()
---         local pos = GetEntityCoords(ped)
---         local dist = #(pos - Config.Registers[k][1].xyz)
---         if dist <= 1 and not Config.Registers[k].robbed then
---             RSGCore.Functions.TriggerCallback('police:GetCops', function(result)
---                 local currentLawmen = result
---                 if currentLawmen >= Config.MinimumLawmen then
---                     if usingAdvanced then
---                         lockpick(true)
---                         currentRegister = k
---                     else
---                         lockpick(true)
---                         currentRegister = k
---                     end
---                     if Config.Alerts == true then
---                         TriggerServerEvent('police:server:policeAlert', 'People are tampering with registers')
---                         --TriggerServerEvent('rsg-lawman:server:lawmanAlert', 'People are tampering with registers') -- not yet added
---                     end
---                 else
---                     RSGCore.Functions.Notify('Not enough lawmen on duty!', 'error')
---                 end
---             end)
---         end
---     end
--- end)
-
 RegisterNetEvent('lockpicks:UseLockpick')
 AddEventHandler('lockpicks:UseLockpick', function(isAdvanced)
     usingAdvanced = isAdvanced
@@ -105,10 +73,6 @@ AddEventHandler('lockpicks:UseLockpick', function(isAdvanced)
                             lockpick(true)
                             currentRegister = k
                         end
-                        if Config.Alerts == true then
-                            TriggerServerEvent('police:server:policeAlert', 'People are tampering with registers')
-                            --TriggerServerEvent('rsg-lawman:server:lawmanAlert', 'People are tampering with registers') -- not yet added
-                        end
                     else
                         RSGCore.Functions.Notify('Not enough lawmen on duty!', 'error')
                     end
@@ -117,8 +81,6 @@ AddEventHandler('lockpicks:UseLockpick', function(isAdvanced)
         end
     end
 end)
-
-
 
 function setupRegister()
     RSGCore.Functions.TriggerCallback(
@@ -130,8 +92,6 @@ function setupRegister()
         end
     )
 end
-
-
 
 function lockpick(bool)
     SetNuiFocus(bool, bool)
@@ -152,8 +112,12 @@ RegisterNUICallback(
     function(_, cb)
         if currentRegister ~= 0 then
             lockpick(false)
+            if Config.Alerts == true then
+                TriggerServerEvent('police:server:policeAlert', 'People are tampering with registers')
+                --TriggerServerEvent('rsg-lawman:server:lawmanAlert', 'People are tampering with registers') -- not yet added
+            end
             TriggerServerEvent('rsg-storerobbery:server:setRegisterStatus', currentRegister)
-            local lockpickTime = 10000
+            local lockpickTime = 60000
             RSGCore.Functions.Progressbar(
                 'search_register',
                 'Stealing Cash',
@@ -180,7 +144,7 @@ RegisterNUICallback(
                     print('Success')
                     TriggerServerEvent('rsg-storerobbery:server:takeMoney')
                     if Config.RewardType == false then
-                        --TriggerServerEvent('InteractSound_SV:PlayOnSource', 'coins', 90.0)
+                        TriggerServerEvent('InteractSound_SV:PlayOnSource', 'coins', 90.0)
                     end
                 end,
                 function()
