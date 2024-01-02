@@ -53,8 +53,7 @@ AddEventHandler('lockpicks:UseLockpick', function(isAdvanced)
 
     if inCooldown then
         -- Notify the player about the cooldown
-        local message = "You are currently in a cooldown. You can't rob this yet."
-        RSGCore.Functions.Notify(message, "error", 5000, src)
+        lib.notify({ title = 'You are currently in a cooldown. You can\'t rob this yet.', type = 'error', duration = 5000 })
     else
         -- Proceed with the action (lockpicking, etc.)
         for k, register in ipairs(Config.Registers) do
@@ -75,7 +74,7 @@ AddEventHandler('lockpicks:UseLockpick', function(isAdvanced)
                             currentRegister = k
                         end
                     else
-                        RSGCore.Functions.Notify('Not enough lawmen on duty!', 'error')
+                        lib.notify({ title = 'Not enough lawmen on duty!', type = 'error', duration = 5000 })
                     end
                 end)
             end
