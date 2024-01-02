@@ -15,7 +15,9 @@ Config.AdvLockpickBreak = 5 -- Lower the smaller chance of breaking (Currently 5
 Config.resetTime = (60 * 1000) * 30 -- Every 30 minutes the store can be robbed again
 Config.tickInterval = 1000 -- Ignore
 
-Config.MinimumLawmen = 1 -- amount of lawmen needed (not added yet)
+Config.Alerts = true
+
+Config.MinimumLawmen = 1 -- amount of lawman needed for heist
 
 --Add new registers to rob by easily
 --First Copy and paste a line
