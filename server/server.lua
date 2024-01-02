@@ -11,7 +11,8 @@ end
 
 local function CheckVersion()
     PerformHttpRequest(
-        'https://raw.githubusercontent.com/Andyauk/rsg-storerobbery/main/version.txt',
+        --'https://raw.githubusercontent.com/Rexshack-RedM/rsg-storerobbery/main/version.txt',
+        'https://raw.githubusercontent.com/Andyauk/rsg-storerobbery/main/version.txt',  --temp update in
         function(err, text, headers)
             local currentVersion = GetResourceMetadata(GetCurrentResourceName(), 'version')
 
@@ -90,9 +91,10 @@ CreateThread(
 RSGCore.Functions.CreateUseableItem(
     'lockpick',
     function(source, item)
-        local Player = RSGCore.Functions.GetPlayer(source)
-        if Player.Functions.RemoveItem(item.name, 1, item.slot) then
-            TriggerClientEvent('lockpicks:UseLockpick', source, item.name)
+        local src = source
+        local Player = RSGCore.Functions.GetPlayer(src)
+        if Player.Functions.GetItemByName(item.name) ~= nil then
+            TriggerClientEvent('lockpicks:UseLockpick', src)
         end
     end
 )
@@ -100,9 +102,10 @@ RSGCore.Functions.CreateUseableItem(
 RSGCore.Functions.CreateUseableItem(
     'advancedlockpick',
     function(source, item)
-        local Player = RSGCore.Functions.GetPlayer(source)
-        if Player.Functions.RemoveItem(item.name, 1, item.slot) then
-            TriggerClientEvent('lockpicks:UseLockpick', source, item.name)
+        local src = source
+        local Player = RSGCore.Functions.GetPlayer(src)
+        if Player.Functions.GetItemByName(item.name) ~= nil then
+            TriggerClientEvent('lockpicks:UseLockpick', src)
         end
     end
 )

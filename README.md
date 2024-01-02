@@ -23,12 +23,12 @@
 
 - add the following to your server.cfg file : ensure rsg-storerobbery
 
-# witchdoctor revive System
+# Store Robbery System
 
-- Locations hidden
 
 # Credits
 
 - RexShack
 - andyauk
 - SagginChairLLC
+- RMS_dnb
