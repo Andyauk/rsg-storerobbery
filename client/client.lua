@@ -64,6 +64,7 @@ AddEventHandler('lockpicks:UseLockpick', function(isAdvanced)
             
             if dist <= 1 and not register.robbed then
                 RSGCore.Functions.TriggerCallback('police:GetCops', function(result)
+                --no police:GetCops for lawman
                     local currentLawmen = result
                     if currentLawmen >= Config.MinimumLawmen then
                         if usingAdvanced then
