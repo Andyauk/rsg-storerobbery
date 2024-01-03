@@ -62,8 +62,8 @@ AddEventHandler('lockpicks:UseLockpick', function(isAdvanced)
             local dist = #(pos - Config.Registers[k][1].xyz)
             
             if dist <= 1 and not register.robbed then
-                RSGCore.Functions.TriggerCallback('police:GetCops', function(result)
-                --no police:GetCops for lawman
+                --RSGCore.Functions.TriggerCallback('police:GetCops', function(result)
+                RSGCore.Functions.TriggerCallback('lawman:GetLaw', function(result)
                     local currentLawmen = result
                     if currentLawmen >= Config.MinimumLawmen then
                         if usingAdvanced then
@@ -113,8 +113,8 @@ RegisterNUICallback(
         if currentRegister ~= 0 then
             lockpick(false)
             if Config.Alerts == true then
-                TriggerServerEvent('police:server:policeAlert', 'People are tampering with registers')
-                --TriggerServerEvent('rsg-lawman:server:lawmanAlert', 'People are tampering with registers') -- not yet added
+                --TriggerServerEvent('police:server:policeAlert', 'People are tampering with registers')
+                TriggerServerEvent('rsg-lawman:server:lawmanAlert', 'People are tampering with registers')
             end
             TriggerServerEvent('rsg-storerobbery:server:setRegisterStatus', currentRegister)
             local lockpickTime = 60000
