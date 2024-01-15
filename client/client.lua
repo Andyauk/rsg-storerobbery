@@ -125,8 +125,8 @@ RegisterNUICallback(
                 false,
                 true,
                 {
-                    disableMovement = false,
-                    disableCarMovement = false,
+                    disableMovement = true,
+                    disableCarMovement = true,
                     disableMouse = false,
                     disableCombat = true
                 },
