@@ -44,11 +44,17 @@ AddEventHandler(
         local src = source
         local Player = RSGCore.Functions.GetPlayer(src)
 
+        local firstname = Player.PlayerData.charinfo.firstname
+        local lastname = Player.PlayerData.charinfo.lastname
+        local item = Config.RewardItem..' '..Config.RewardAmount
+        local item1 = Config.CurrencyType..' '..Config.CurrencyAmount
         if Config.RewardType == true then
             Player.Functions.AddItem(Config.RewardItem, Config.RewardAmount)
             TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items[Config.RewardItem], 'add')
+            TriggerEvent('rsg-log:server:CreateLog', 'loot', 'looted till 🌟', 'orange', firstname..' '..lastname..' found '..item..' loot!')
         else
             Player.Functions.AddMoney(Config.CurrencyType, Config.CurrencyAmount)
+            TriggerEvent('rsg-log:server:CreateLog', 'loot', 'looted till 🌟', 'orange', firstname..' '..lastname..' found '..item1..' loot!')
         end
     end
 )

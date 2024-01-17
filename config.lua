@@ -4,10 +4,10 @@ Config = {}
 Config.RewardType = false -- If true you recieve an item if false you will recieve currency(Like cash,bank or any other currencys)
 
 Config.RewardItem = 'apple' -- Make sure item is in the rsg-core/shared/items
-Config.RewardAmount = 25 --Randomize by using  -  math.random(10, 25)
+Config.RewardAmount = math.random(1, 3) -- or remove math.random(1, 3) and change to 1 ect
 
 Config.CurrencyType = 'cash' -- Currency type cash,bank ect
-Config.CurrencyAmount = 50 -- Currency amount
+Config.CurrencyAmount = math.random(10, 25) -- or remove math.random(10, 25) and change to 20 ect
 
 Config.LockpickBreak = 40 -- Lower the smaller chance of breaking (Currently 40%)
 Config.AdvLockpickBreak = 5 -- Lower the smaller chance of breaking (Currently 5%)
