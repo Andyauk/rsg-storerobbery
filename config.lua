@@ -25,7 +25,7 @@ Config.MinimumLawmen = 1 -- amount of lawman needed for heist
 --then change the vector to location
 --Good Luck! (Do NOT Change the robbed or time status)
 Config.Registers = {
-    [1] = {vector3(1330.27, -1293.57, 77.02), robbed = false, time = 0}, -- rhodes
+    [1] = {vector3(1330.07, -1293.62, 77.02), robbed = false, time = 0}, -- rhodes
     [2] = {vector3(-324.28, 804.29, 117.88), robbed = false, time = 0}, -- valentine
     [3] = {vector3(-1789.33, -387.55, 160.33), robbed = false, time = 0}, -- strawberry
     [4] = {vector3(2860.15, -1202.15, 49.59), robbed = false, time = 0}, -- saint denis
